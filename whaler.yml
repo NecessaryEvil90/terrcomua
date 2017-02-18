@@ -1,0 +1,15 @@
+services:
+    mysql:
+        image: mysql:5
+        env:
+            MYSQL_ROOT_PASSWORD: '123123'
+        volumes:
+            .mcloud/mysql/my.cnf: /etc/my.cnf
+
+    apachephp:
+        web: 80
+        image: moderanet/apachephp
+        cmd: .mcloud/apachephp/run.sh
+        wait: 3000
+        volumes:
+            .: /var/www
